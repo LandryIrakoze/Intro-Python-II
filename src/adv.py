@@ -52,45 +52,26 @@ room['treasure'].s_to = room['narrow']
 #
 # If the user enters "q", quit the game.
 
-player1 = Player('Link', 'outside')
+name = input('Enter your name: ')
+
+# player1 = Player(name, 'outside')
+player1 = Player(name, room['outside'])
+valid_inputs = ('n', 's', 'e', 'w', 'q')
 
 
 while True:
 
-	print(room[player1.current_room])
-	valid_inputs = ('n', 's', 'e', 'w', 'q')
-	command = input('enter a direction:  [n] North  [s] South  [e] East  [w] West  [q] Quit\n')
+	print(player1.current_room)	
+	cmd = input('~~> ').lower()
 
-	if command in valid_inputs:
-		if command == 'q':
-			break
-		elif command == 'n':
-			#allowed_useage, outside, foyer, narrow
-			if player1.current_room == 'outside':
-				pass
-			elif player1.current_room == 'foyer':
-				pass
-			elif player1.current_room == 'narrow':
-				pass
-		elif command == 's':
-			#allowed_useage, overlook, treasure
-			if player1.current_room == 'overlook':
-				pass
-			elif player1.current_room == 'treasure':
-				pass
-			else:
-				print('you cant move there\n')
-		elif command == 'e':
-			#allowed_useage, foyer
-			if player1.current_room == 'foyer':
-				pass
-			else:
-				print('you cant move there\n')
-		elif command == 'w':
-			#allowed_useage, narrow
-			if player1.current_room == 'narrow':
-				pass
-			else:
-				print('you cant move there\n')
+	if cmd == 'q':
+		print('goodbye')
+		break
+	elif cmd in valid_inputs:
+		player1.travel(cmd)
 	else:
-		print('please enter a valid commpand\n')
+		print('please enter a valid command\n')
+
+
+
+
