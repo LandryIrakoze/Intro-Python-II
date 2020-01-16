@@ -12,7 +12,12 @@ class Room:
 		self.w_to = None
 
 	def __str__(self):
-		return f'\n----------------\n\n{self.name}\n\n{self.description}\n{self.get_exits_string()}'
+		display_string = ''
+		display_string += f'\n----------------\n'
+		display_string += f'\n{self.name}\n'
+		display_string += f'\n{self.description}\n'
+		display_string += f'{self.get_exits_string()}'
+		return display_string
 
 	def get_room_in_direction(self, direction):
 		if direction == 'n':
