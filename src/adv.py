@@ -1,4 +1,6 @@
 from room import Room
+from player import Player 
+
 
 # Declare all the rooms
 
@@ -49,3 +51,27 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+name = input('Enter your name: ')
+
+# player1 = Player(name, 'outside')
+player1 = Player(name, room['outside'])
+valid_inputs = ('n', 's', 'e', 'w', 'q')
+
+
+while True:
+
+	print(player1.current_room)	
+	cmd = input('~~> ').lower()
+
+	if cmd == 'q':
+		print('goodbye')
+		break
+	elif cmd in valid_inputs:
+		player1.travel(cmd)
+	else:
+		print('please enter a valid command\n')
+
+
+
+
